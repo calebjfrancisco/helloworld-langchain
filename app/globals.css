@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+input[type="text"] {
+  background-color: var(--background-end-rgb);
+  border: 1px solid white;
+  border-radius: 3px;
+  outline: none;
+  padding: 5px 10px;
+}
