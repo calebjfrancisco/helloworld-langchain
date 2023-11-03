@@ -1,13 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { OpenAI } from "langchain/llms/openai";
+import { ChatBot } from "../../../common/chat-bot";
 
-const llm = new OpenAI({
-  openAIApiKey: process.env.OPEN_AI_API_KEY,
-});
-
-// To handle a POST request to /api
+// To handle a POST request to /api/chat
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const message = await llm.predict(body.prompt);
+  const bot = ChatBot.openAi();
+  const message = await bot.respondTo(body.prompt);
   return NextResponse.json({ message }, { status: 200 });
 }
